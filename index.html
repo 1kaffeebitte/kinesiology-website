@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veras neuroenergetische Kinesiologie</title>
+    <title>🌿 Vera's neuroenergetic Kinesiology 🌿</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,11 +21,8 @@
             border-radius: 8px;
             margin-bottom: 20px;
         }
-        h1 {
-            color: #1a73e8;
-        }
-        .lang-en, .lang-de { display: none; }
-        .active-lang { display: block; }
+        h1 { color: #1a73e8; }
+        .lang-de { display: none; }
     </style>
 </head>
 
@@ -35,11 +32,11 @@
     <img src="img/relax.jpg" alt="A beautiful placeholder scene">
     
     <!-- Language Selector Buttons -->
-    <button onclick="switchLanguage('en')">English</button>
-    <button onclick="switchLanguage('de')">Deutsch</button>
+    <button onclick="changeLanguage('en')">English</button>
+    <button onclick="changeLanguage('de')">Deutsch</button>
 
     <!-- English Content -->
-    <div id="en" class="lang-en active-lang">
+    <div id="content-en" class="lang-en">
         <h1>🌿 Vera's neuroenergetic Kinesiology 🌿</h1>
         <p>Find your way back to balance</p>
         <p>Are you feeling stressed, exhausted, or internally blocked? Neuroenergetic kinesiology supports you in bringing body, mind, and energy back into harmony.</p>
@@ -77,7 +74,7 @@
     </div>
 
     <!-- German Content -->
-    <div id="de" class="lang-de">
+    <div id="content-de" class="lang-de">
         <h1>🌿 Veras neuroenergetische Kinesiologie 🌿</h1>
         <p>Finde zurück in deine Balance</p>
         <p>Fühlst du dich gestresst, erschöpft oder innerlich blockiert? Die neuroenergetische Kinesiologie unterstützt dich dabei, Körper, Geist und Energie wieder in Einklang zu bringen.</p>
@@ -115,16 +112,25 @@
     </div>
 
     <script>
-        function switchLanguage(lang) {
-            // Hide all language sections
-            document.getElementById('en').classList.remove('active-lang');
-            document.getElementById('de').classList.remove('active-lang');
-            
-            // Show the selected language section
-            document.getElementById(lang).classList.add('active-lang');
+        function changeLanguage(lang) {
+            document.documentElement.lang = lang;
+
+            const enContent = document.getElementById('content-en');
+            const deContent = document.getElementById('content-de');
+
+            if (lang === 'de') {
+                deContent.style.display = 'block';
+                enContent.style.display = 'none';
+                // Change title to German
+                document.title = "🌿 Veras neuroenergetische Kinesiologie 🌿"; 
+            } else {
+                enContent.style.display = 'block';
+                deContent.style.display = 'none';
+                // Change title to English
+                document.title = "🌿 Vera's neuroenergetic Kinesiology 🌿"; 
+            }
         }
     </script>
 
 </body>
-
 </html>
